@@ -29,7 +29,13 @@ public class Aparato {
     }
 
     public double getConsumo() {
-        return consumo;
+        double consumoActual =0;
+        if (encendido) {
+            consumoActual = this.consumo;
+        }else{
+            consumoActual = consumoPasivo;
+        }
+        return consumoActual;
     }
 
     public void setConsumo(double consumo) {
@@ -47,10 +53,6 @@ public class Aparato {
         if (encendido) {
             this.encendido = false;
         }
-    }
-
-    public double obtenerConsumo() {
-        return this.consumo;
     }
 
     public String getNombre() {

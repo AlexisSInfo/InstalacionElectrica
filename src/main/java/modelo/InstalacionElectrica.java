@@ -31,7 +31,7 @@ public class InstalacionElectrica {
     public void calcularConsumoTotal() {
 
         for (Aparato a : this.ap) {
-            this.consumoTotal += a.obtenerConsumo();
+            this.consumoTotal += a.getConsumo();
         }
 
     }
