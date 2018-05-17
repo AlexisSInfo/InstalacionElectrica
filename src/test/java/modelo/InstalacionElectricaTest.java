@@ -44,13 +44,25 @@ public class InstalacionElectricaTest {
         
         this.ia.conectarAparato(a1);
         this.ia.conectarAparato(a2);
-        
-     
-           // this.ia.obtenerConsumoTotal();
-            
-        
-
  
+    }
+    
+    @Test
+    public void testConsumoAparatos(){
+        double consumoEsperado;
+        double consumoReal = 2510;
+        
+        Aparato a1 = new Aparato(1000, 0, "plancha", "modelo");
+        Aparato a2 = new Aparato(750, 0, "apiradora", "modelo");
+        Aparato a3 = new Aparato(760, 0, "televisor", "modelo");
+        
+        this.ia.conectarAparato(a1);
+        this.ia.conectarAparato(a2);
+        this.ia.conectarAparato(a3);
+
+        consumoEsperado = (a1.getConsumo()+ a2.getConsumo()+ a3.getConsumo());
+        assertEquals(consumoReal, consumoEsperado, 0.01);
+        
     }
     
 }
