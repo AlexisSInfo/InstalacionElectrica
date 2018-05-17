@@ -35,7 +35,27 @@ public class InstalacionElectrica {
         }
 
     }
+    
+    public void encenderAparato(int posicion) throws NullPointerException{
+        if (posicion>ap.size()) {
+            throw new NullPointerException();
+        }else{
+            Aparato aparato = this.ap.get(posicion);
+            aparato.encender();
+            this.ap.set(posicion, aparato);
+        }
+    }
 
+    public void apagarAparato(int posicion) throws NullPointerException{
+        if (posicion>ap.size()) {
+            throw new NullPointerException();
+        }else{
+            Aparato aparato = this.ap.get(posicion);
+            aparato.apagar();
+            this.ap.set(posicion, aparato);
+        }
+    }
+    
     public double obtenerConsumoTotal() throws DemasiadosAparatosException {
 
         if (this.consumoTotal > 4000) {
