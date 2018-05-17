@@ -42,6 +42,12 @@ public class Aparato {
             this.encendido = true;
         }
     }
+    
+    public void apagar(){
+        if (encendido) {
+            this.encendido = false;
+        }
+    }
 
     public double obtenerConsumo() {
         return this.consumo;
