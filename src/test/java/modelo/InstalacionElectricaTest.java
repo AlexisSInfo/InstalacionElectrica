@@ -34,35 +34,59 @@ public class InstalacionElectricaTest {
         ia = null;
     }
     
-    @Test(expected = DemasiadosAparatosException.class)
-    public void verificarExcepcion(){
-    
-        Aparato a1 = new Aparato();
-        a1.setConsumo(3500);
-        Aparato a2 = new Aparato();
-        a2.setConsumo(1500);
-        
-        this.ia.conectarAparato(a1);
-        this.ia.conectarAparato(a2);
- 
-    }
+//    @Test(expected = DemasiadosAparatosException.class)
+//    public void verificarExcepcion(){
+//    
+//        Aparato a1 = new Aparato();
+//        a1.setConsumo(3500);
+//        Aparato a2 = new Aparato();
+//        a2.setConsumo(1500);
+//        
+//        this.ia.conectarAparato(a1);
+//        this.ia.conectarAparato(a2);
+// 
+//    }
     
     @Test
     public void testConsumoAparatos(){
         double consumoEsperado;
-        double consumoReal = 2510;
+        double consumoReal = 0;
         
         Aparato a1 = new Aparato(1000, 0, "plancha", "modelo");
-        Aparato a2 = new Aparato(750, 0, "apiradora", "modelo");
+        Aparato a2 = new Aparato(675, 0, "apiradora", "modelo");
         Aparato a3 = new Aparato(760, 0, "televisor", "modelo");
         
         this.ia.conectarAparato(a1);
         this.ia.conectarAparato(a2);
         this.ia.conectarAparato(a3);
-
-        consumoEsperado = (a1.getConsumo()+ a2.getConsumo()+ a3.getConsumo());
+        this.ia.calcularConsumoTotal();
+        consumoEsperado = ia.consumoTotal;
         assertEquals(consumoReal, consumoEsperado, 0.01);
         
     }
+    @Test
+    public void testConsumoAparatos2(){
+        double consumoReal = 1675;
+        double consumoEsperado;
+        Aparato a1 = new Aparato(1000, 0, "plancha", "modelo");
+        Aparato a2 = new Aparato(675, 0, "apiradora", "modelo");
+        Aparato a3 = new Aparato(760, 0, "televisor", "modelo");
+        
+        this.ia.conectarAparato(a1);
+        this.ia.conectarAparato(a2);
+        this.ia.conectarAparato(a3);
+        
+        this.ia.encenderAparato(0);
+        this.ia.encenderAparato(1);
+        
+        this.ia.calcularConsumoTotal();
+        consumoEsperado = ia.consumoTotal;
+         
+        assertEquals(consumoReal, consumoEsperado, 0.01);
+           
+        
+        
+        }
+    }
     
-}
+
